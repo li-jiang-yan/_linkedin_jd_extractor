@@ -1,5 +1,3 @@
-import os
-import json
 from bs4 import BeautifulSoup
 
 class Post:
@@ -23,6 +21,9 @@ class Post:
     def __str__(self):
         return str(self._info)
 
+    def get_link(self):
+        return self._link
+
 class Company:
 
     def __init__(self, soup):
@@ -30,6 +31,9 @@ class Company:
         self._link = soup.select_one("a.hidden-nested-link").get("href")
 
 if __name__ == "__main__":
+    import os
+    import json
+
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     with open("scraper/posts.json", "r", encoding="utf-8") as f:
         list(map(print, map(Post, json.load(f))))
