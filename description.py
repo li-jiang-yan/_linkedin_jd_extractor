@@ -25,6 +25,9 @@ class Description:
     def __str__(self):
         return str(self._info)
 
+    def get_text(self):
+        return self._text
+
 class Criteria:
 
     def __init__(self, soup):
