@@ -28,8 +28,8 @@ class Description:
 class Criteria:
 
     def __init__(self, soup):
-        keys = [key.string.strip() for key in soup.find_all("h3", class_="description__job-criteria-subheader")]
-        values = [value.string.strip() for value in soup.find_all("span", class_="description__job-criteria-text")]
+        keys = list(key.string.strip() for key in soup.find_all("h3", class_="description__job-criteria-subheader"))
+        values = list(value.string.strip() for value in soup.find_all("span", class_="description__job-criteria-text"))
         self._dict = dict(zip(keys, values))
 
     def get_dict(self):
