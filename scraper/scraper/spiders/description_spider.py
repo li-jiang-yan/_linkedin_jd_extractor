@@ -40,7 +40,6 @@ if __name__ == "__main__":
         soups = list(BeautifulSoup(html_doc, "html.parser") for html_doc in posts)
         start_urls = list(soup.select_one("a.base-card__full-link").get("href") for soup in soups)
 
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
     scraper = ScraperRun(start_urls=start_urls)
     results = scraper.run_spider()
 
